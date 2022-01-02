@@ -1,0 +1,6 @@
+import numpy as np
+import pandas
+
+print('program is starting ...')
+excel_data_df = pandas.read_excel('/Users/gokhan/Documents/FileName.xlsx', sheet_name='Sheet1')
+print(excel_data_df)
