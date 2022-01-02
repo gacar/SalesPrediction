@@ -1,0 +1,19 @@
+import numpy as np
+import pandas as pds
+import pyarrow as pa
+import pyarrow.parquet as pq
+
+
+#print(type(np_array))
+#print(np_array)
+print('program is starting ...')
+
+PATH = "/Users/gokhan/Documents/"
+excel_data_df = pds.read_excel(PATH + 'FileName.xlsx', sheet_name='Sheet1')
+
+# print whole sheet data
+print(excel_data_df)
+
+parquet_table = pa.Table.from_pandas(excel_data_df, preserve_index=False)
+pq.write_table(parquet_table, PATH + 'parquetFileName.parquet')
+
