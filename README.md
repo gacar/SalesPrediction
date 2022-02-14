@@ -1,4 +1,4 @@
 ## Steps of Development ##
-- ReadExcelFile
-- ExcelToParquet
-- ReadExcelFile
+1. ReadExcelFile
+2. ExcelToParquet
+3. ReadExcelFile
