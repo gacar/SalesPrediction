@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.arima.model import ARIMA
+
+
+print('program is starting ...')
+excel_data_df = pd.read_excel('denemets.xlsx', sheet_name='Sayfa1')
+print(excel_data_df)
+
+#ARIMA(excel_data_df, order=(5,1,0))
+
+#print(excel_data_df.head());
+
+def plot_df(excel_data_df, x, y, title="", xlabel='index', ylabel='value', dpi=100):
+    plt.figure(figsize=(16,5), dpi=dpi)
+    plt.plot(x, y, color='tab:red')
+    plt.gca().set(title=title, xlabel=xlabel, ylabel=ylabel)
+    plt.show()
+    
+    
+plot_df(excel_data_df, x=excel_data_df.index, y=excel_data_df.value, title='Display sample plot')
