@@ -1,0 +1,2 @@
+#install prophet with conda install -c conda-forge prophet
+#if any proplem occurs, try alternative commands (https://anaconda.org/conda-forge/prophet)
