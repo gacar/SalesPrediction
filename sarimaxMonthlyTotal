@@ -1,0 +1,25 @@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.arima.model import ARIMA
+import statsmodels.api as sm
+
+print('program is starting ...')
+excel_data_df = pd.read_excel('ayliktoplamsatislar1620.xlsx', sheet_name='Sayfa1');
+
+
+excel_data_df["TARIH"]= pd.to_datetime(excel_data_df["TARIH"] ,format="%Y-%m-%d")
+excel_data_df.set_index("TARIH",inplace=True);
+
+mod = sm.tsa.statespace.SARIMAX(excel_data_df['MIKTAR'], order=(5,0,5),seasonal_order=(2,2,1,11)) #güzel görüntü
+#mod = sm.tsa.statespace.SARIMAX(excel_data_df['MIKTAR'], order=(4,1,4),seasonal_order=(2,2,1,12))
+res = mod.fit();
+print(res.aic);
+
+newDf=pd.DataFrame()
+print(res.summary());
+
+excel_data_df['forecast'] = res.predict(start=1,end=50,dynamic=True)
+excel_data_df[['MIKTAR','forecast']].plot()
+
+
